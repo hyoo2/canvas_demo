@@ -6,13 +6,25 @@ var GOLD = "#C79900";
 
 $(document).ready(function(){
 
-  //intialization
+  //initialization
   var paper = Raphael('raphael',600,600); //put in the #raphael div
 
   //drawing
+  var rect = paper.rect(50, 60, 100, 200)
+    .attr({
+        'fill' : PURPLE,
+        'stroke' : GOLD,
+        'stroke-width' : 4
+    });
 
-
-
+    rect.click(function() {
+        rect.animate({
+            'fill' : GOLD,
+            'stroke' : PURPLE
+        },
+        1000
+        );
+    });
 
 
 

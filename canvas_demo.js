@@ -10,12 +10,38 @@ $(document).ready(function(){
   var g = canvas.getContext("2d"); //graphics context (paintbrush)
 
   //drawing
-  g.font = '60px Helvetica';
-  g.fillText('http://goo.gl/TGlfcZ', 10,250);
+  // g.font = '60px Helvetica';
+  // g.fillText('http://goo.gl/TGlfcZ', 10,250);
+
+    g.fillStyle = PURPLE;
+    g.fillRect(50, 60, 100, 200);
+
+    g.lineStyle = PURPLE;
+    g.lineWidth = 4;
+
+    g.beginPath();
+    g.moveTo(200, 200);
+    g.lineTo(220, 400);
+    g.stroke();
+    g.lineTo(270, 250);
+    g.lineTo(320, 400);
+    g.lineTo(320, 200);
+    g.stroke();
 
 
 
+    $('canvas').mousedown(function(evt) {
+        $('#canvas').mousemove(function(evt) {
+            var x = evt.pageX - $('#canvas').offset().left;
+            var y = evt.pageY - $('#canvas').offset().top;
+            g.lineTo(x,y);
+            g.stroke();
+        });
+    });
 
+    $(document).mouseup(function(evt) {
+        $('#canvas').unbind(mousemove);
+    });
 
 
 
@@ -30,6 +56,12 @@ $(document).ready(function(){
 
 
 
+//    var lineTo = function(evt){
+//       var x = evt.pageX - $('#canvas').offset().left;
+//       var y = evt.pageY - $('#canvas').offset().top;
+//       g.lineTo(x,y);
+//       g.stroke();
+//    };
 
 
 
@@ -49,10 +81,4 @@ $(document).ready(function(){
 
 
 
-  // var lineTo = function(evt){
-  //   var x = evt.pageX - $('#canvas').offset().left;
-  //   var y = evt.pageY - $('#canvas').offset().top;
-  //   g.lineTo(x,y);
-  //   g.stroke();
-  // };
 
